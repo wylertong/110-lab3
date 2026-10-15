@@ -41,15 +41,31 @@ const lemon2 = new Konva.Line({
 });
 
 // Change cursor on hover
-lemon2.on('mouseover', (e) => {
-  const stage = e.target.getStage();
-  stage.container().style.cursor = 'pointer';
+lemon2.on('mouseover', () => {
+  document.body.style.cursor = 'pointer';
 });
 
 // Revert cursor when hover ends
-lemon2.on('mouseout', (e) => {
-  const stage = e.target.getStage();
-  stage.container().style.cursor = 'default';
+lemon2.on('mouseout', () => {
+    document.body.style.cursor = 'default';
+
+});
+
+
+lemon2.on('mousedown', () => {
+    lemon2.to({
+        scaleX : lemon2.scaleX() * 200,
+        scaleY : lemon2.scaleY() * 200,
+        duration : 100,
+    })
+});
+
+lemon2.on('mouseup', () => {
+    lemon2.to({
+        scaleX : 1,
+        scaleY : 1,
+        duration : 0.15,
+    })
 });
 
 // add the shape to the layer
