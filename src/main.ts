@@ -20,8 +20,7 @@ const circle = new Konva.Circle({
   strokeWidth: 4
 });
 
-const blob = new Konva.Line({
-
+const lemon2 = new Konva.Line({
 
   points: [stage.width() / 2 + 75, stage.height() / 2,
            stage.width() / 2 + 40, stage.height() / 2 - 30,
@@ -37,11 +36,24 @@ const blob = new Konva.Line({
   stroke: 'black',
   strokeWidth: 5,
   closed: true,
-  tension: 0.3
+  tension: 0.3,
+  draggable: true
+});
+
+// Change cursor on hover
+lemon2.on('mouseover', (e) => {
+  const stage = e.target.getStage();
+  stage.container().style.cursor = 'pointer';
+});
+
+// Revert cursor when hover ends
+lemon2.on('mouseout', (e) => {
+  const stage = e.target.getStage();
+  stage.container().style.cursor = 'default';
 });
 
 // add the shape to the layer
-layer.add(blob);
+layer.add(lemon2);
 
 // add the layer to the stage
 stage.add(layer);
